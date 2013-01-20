@@ -64,15 +64,6 @@ int main()
     obj = my_strdup(input_buffer);
     id = map_insert(&container, obj);
   }
-
-  printf("Din mamma:\n ");
-  for(int y=0;y<10;y++)
-  {
-    printf("%i . ",y);
-    for(int x=0;x<strlen(container.content[y]);x++)
-      printf("%c",*((container.content[y])+x));
-    printf("\n");
-  }
   /* remember to test with invalid keys (like 4711, or -1) */
   for ( i = 0; i < LOOPS; ++i)
   {

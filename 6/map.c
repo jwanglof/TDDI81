@@ -14,13 +14,9 @@ key_t map_insert(struct map* m, value_t v)
     counter++;
   
   if (counter == MAP_SIZE)
-  {
-    printf("MAP full!");
-    PANIC();
-  }
-
+    printf("MAP full!\n");
+  
   m->content[counter] = v;
-
   return counter;
 }
 
