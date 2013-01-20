@@ -83,9 +83,13 @@ int main()
     obj = map_find(&container, id);
 
     /*! if it was found, display it */
+    if (obj != NULL)
+    {
     for(unsigned int i=0;i<strlen(obj);i++)
       printf("%c",*(obj+i));
-  
+    }
+    else
+      printf("Not found\n");
     /* since we leave the value in the map we may use it again and
      * should not free the memory */
   }
@@ -106,9 +110,10 @@ int main()
       for(int x=0;x<strlen(obj);x++)
         printf("%c",*(obj+x));
       printf("\n");
+      free(obj);
     }
     else
-      printf("Not found");
+      printf("Not found\n");
     /* since we removed the value from the map we will never use it again and
      * must properly free the memory (if it was allocated) */
   }
@@ -116,7 +121,7 @@ int main()
   /*! print all strings representing an integer less than 5 */
   printf("Will now display all values less than N. Choose N: ");
   scanf("%d", &i);
-  map_for_each(&container, print_less, 5);
+  map_for_each(&container, print_less, i);
   
   /*! free all remaining memory and remove from map */
   map_remove_if(&container, do_free, 0);
