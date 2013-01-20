@@ -37,7 +37,7 @@ char* my_strdup(char* str)
   /*! allocate memory just large enough */
   char* dst = (char*)malloc(len);
   /*! copy all characters in src to dst */
-  strlcpy(dst, str, len);
+  strncpy(dst, str, len);
   
   return dst; /*(!) return our deep copy of str */
 }
@@ -58,13 +58,21 @@ int main()
   {
     /* insecure, scanf may overflow the input buffer array *
      * very serious, but we ignore it in this test program */
-    scanf("%s", input_buffer);
+    scanf("%s",input_buffer);
     
     /*! allocates a copy of the input and inserts in map */
     obj = my_strdup(input_buffer);
     id = map_insert(&container, obj);
   }
 
+  printf("Din mamma:\n ");
+  for(int y=0;y<10;y++)
+  {
+    printf("%i . ",y);
+    for(int x=0;x<strlen(container.content[y]);x++)
+      printf("%c",*((container.content[y])+x));
+    printf("\n");
+  }
   /* remember to test with invalid keys (like 4711, or -1) */
   for ( i = 0; i < LOOPS; ++i)
   {
@@ -92,10 +100,15 @@ int main()
     obj = map_remove(&container, id);
 
     /*! if it was found, display it */
-    printf("Found and removed: ");
-    for(int x=0;x<strlen(*obj);x++)
-      printf("%c",*(obj+x));
-    printf("\n");
+    if (obj != NULL)
+    {
+      printf("Found and removed: ");
+      for(int x=0;x<strlen(obj);x++)
+        printf("%c",*(obj+x));
+      printf("\n");
+    }
+    else
+      printf("Not found");
     /* since we removed the value from the map we will never use it again and
      * must properly free the memory (if it was allocated) */
   }

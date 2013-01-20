@@ -20,6 +20,8 @@ key_t map_insert(struct map* m, value_t v)
   }
 
   m->content[counter] = v;
+
+  return counter;
 }
 
 value_t map_find(struct map* m, key_t k)
