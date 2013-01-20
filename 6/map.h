@@ -1,6 +1,7 @@
 /* do not forget the guard against multiple includes */
 #define PANIC() exit(1)
 #define MAP_SIZE 128
+//#define NULL 'NULL'
 
 typedef char* value_t;
 typedef int key_t;

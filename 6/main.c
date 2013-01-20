@@ -75,7 +75,8 @@ int main()
     obj = map_find(&container, id);
 
     /*! if it was found, display it */
-YOUR CODE
+    for(unsigned int i=0;i<strlen(obj);i++)
+      printf("%c",*(obj+i));
   
     /* since we leave the value in the map we may use it again and
      * should not free the memory */
@@ -91,7 +92,10 @@ YOUR CODE
     obj = map_remove(&container, id);
 
     /*! if it was found, display it */
-YOUR CODE
+    printf("Found and removed: ");
+    for(int x=0;x<strlen(*obj);x++)
+      printf("%c",*(obj+x));
+    printf("\n");
     /* since we removed the value from the map we will never use it again and
      * must properly free the memory (if it was allocated) */
   }
